@@ -140,6 +140,12 @@ pub mod input {
     }
 
     #[napi]
+    pub fn set_input_action_manifest_file_path(path: String) -> bool {
+        let client = crate::client::get_client();
+        client.input().set_input_action_manifest_file_path(&path)
+    }
+
+    #[napi]
     pub fn shutdown() {
         let client = crate::client::get_client();
         client.input().shutdown()
