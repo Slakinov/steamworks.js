@@ -142,7 +142,9 @@ pub mod input {
     #[napi]
     pub fn set_input_action_manifest_file_path(path: String) -> bool {
         let client = crate::client::get_client();
-        client.input().set_input_action_manifest_file_path(&path)
+        let ok = client.input().set_input_action_manifest_file_path(&path);
+        eprintln!("[steamworks.js:set_manifest] {} -> {}", path, ok);
+        ok
     }
 
     #[napi]
